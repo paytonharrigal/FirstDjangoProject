@@ -12,16 +12,11 @@ random_id = random.randint(1,4)
 # from DataBase
 
 def home_view(request):
-
+    # from database
     article_obj = Article.objects.get(id=random_id)
-
-    my_list = [102,13,342,1331,213]
-    my_list_str = ""
-    for x in my_list:
-        my_list_str += f"number is {x}\n"
-
+    article_queryset = Article.objects.all()
     context = {
-        "my_list_str": my_list_str,
+        "object_list": article_queryset,
         "object": article_obj,
         "title": article_obj.title,
         "id": article_obj.id,
